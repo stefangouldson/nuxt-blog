@@ -1,12 +1,14 @@
 <template>
   <section class="post-list">
     <PostPreview
+      :is-admin="isAdmin"
       id="1"
       title="My First Post"
       previewText="Here is some preview text about my first blog post!!!"
       thumbnail="https://res-3.cloudinary.com/fieldfisher/image/upload/c_lfill,g_auto/f_auto,q_auto/v1/sectors/technology/tech_neoncircuitboard_857021704_medium_lc5h05"
     />
     <PostPreview
+      :is-admin="isAdmin"
       id="2"
       title="Coding is fun"
       previewText="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
@@ -21,6 +23,13 @@ import PostPreview from './PostPreview.vue';
 export default {
   components: {
     PostPreview
+  },
+
+  props: {
+    isAdmin: {
+      type: Boolean,
+      default: false
+    }
   }
 }
 </script>
