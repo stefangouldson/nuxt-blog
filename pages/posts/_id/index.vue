@@ -1,12 +1,12 @@
 <template>
   <div class="single-post-page">
     <section class="post">
-      <h1>Title</h1>
+      <h1>{{ loadedPost.title }}</h1>
       <div class="post-details">
-        <div class="post-detail">Last updated: dd/mm/yyyy </div>
-        <div class="post-detail">Written by Name</div>
+        <div class="post-detail">Last updated: {{ loadedPost.updatedDate }} </div>
+        <div class="post-detail">Written by {{ loadedPost.author }}</div>
       </div>
-      <p>Post content</p>
+      <p>{{ loadedPost.content }}</p>
     </section>
     <section class="post-feedback">
       <p>
@@ -16,6 +16,35 @@
     </section>
   </div>
 </template>
+
+<script>
+export default {
+  asyncData(context) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({
+          loadedPost: {
+            id: "1",
+            thumbnail: "https://res-3.cloudinary.com/fieldfisher/image/upload/c_lfill,g_auto/f_auto,q_auto/v1/sectors/technology/tech_neoncircuitboard_857021704_medium_lc5h05",
+            title: "First Post",
+            previewText: "This is our first post",
+            author: 'Stefan',
+            updatedDate: new Date(),
+            content: 'Some dummy text which is not used for the preview text'
+          }
+        })
+      } ,1000);
+      // reject(new Error());
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch(e => {
+      context.error(new Error());
+    })
+  }
+}
+</script>
 
 <style scoped>
 .single-post-page {

@@ -3,9 +3,7 @@
     <section class="intro">
       <h1>Get latest tech news!</h1>
     </section>
-    <section class="featured-posts">
-      <PostList />
-    </section>
+    <PostList :posts="loadedPosts" />
   </div>
 </template>
 
@@ -17,6 +15,11 @@ export default {
   components: {
     PostList,
   },
+  computed: {
+    loadedPosts(){
+      return this.$store.getters.loadedPosts;
+    }
+  }
 };
 </script>
 
@@ -26,7 +29,7 @@ export default {
   position: relative;
   padding: 30px;
   box-sizing: border-box;
-  background-image: url('~assets/images/main-page-background.jpg');
+  background-image: url("~assets/images/main-page-background.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -50,14 +53,5 @@ export default {
   .intro h1 {
     font-size: 2rem;
   }
-}
-
-.featured-posts {
-  display: flex;
-  padding: 20px;
-  box-sizing: border-box;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
 }
 </style>
