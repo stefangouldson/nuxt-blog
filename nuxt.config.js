@@ -21,10 +21,12 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~assets/styles/main.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~plugins/core-components.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -46,6 +48,13 @@ export default {
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: '/',
+  },
+
+  loading: '~/components/LoadingBar.vue',
+
+  transition: {
+    name: 'fade',
+    mode: 'out-in'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

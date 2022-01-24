@@ -12,13 +12,11 @@
 
 <script>
 import PostList from '@/components/Posts/PostList';
-import AppButton from "@/components/UI/AppButton.vue";
 
 export default {
   layout: 'admin',
   components: {
     PostList,
-    AppButton
   },
 
 }
